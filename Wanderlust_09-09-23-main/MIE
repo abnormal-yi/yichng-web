@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanzania Safari</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #111;
+            color: white;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200%;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(18, 1, 1, 0.247);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(23, 3, 3, 0.2);
+            color: white;
+            z-index: 1000;
+        }
+        }
+        .navbar .logo {
+            font-size: 26px;
+            font-weight: bold;
+        }
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .navbar ul li {
+            margin: 0 20px;
+        }
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+        .navbar ul li a:hover {
+            color:#c3282b;;
+        }
+        .hero-slider {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .slide.active {
+            opacity: 1;
+        }
+        .content {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .content h1 {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+        .content p {
+            font-size: 20px;
+        }
+        .dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+        }
+        .dot {
+            width: 15px;
+            height: 15px;
+            margin: 5px;
+            background: white;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .dot.active {
+            background:#c3282b;;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Tanzania Safari</div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Destinations</a></li>
+            <li><a href="#">Tours</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <div class="hero-slider">
+            <div class="slide active" style="background-image: url('assets/tanzania-wild-sky-rcGU1VUgLos-unsplash\ \(2\).jpg');">
+                <div class="content">
+                    <h1>Discover Tanzania</h1>
+                    <p>Experience the best safaris and wildlife adventures.</p>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('assets/The\ Best\ National\ Parks\ and\ Reserves\ in\ TanzaniaN.webp');">
+                <div class="content">
+                    <h1>Serengeti Wonders</h1>
+                    <p>Witness the Great Migration and stunning landscapes.</p>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('assets/Sun\,\ Sand\ &\ Sea\ Zanzibar\ Extension.jpg');">
+                <div class="content">
+                    <h1>Zanzibar Escape</h1>
+                    <p>Relax on pristine beaches and explore rich culture.</p>
+                </div>
+            </div>
+            <div class="dots">
+                <span class="dot active" onclick="currentSlide(0)"></span>
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+            </div>
+        </div>
+    </header>
+    
+    <script>
+        let slides = document.querySelectorAll('.slide');
+        let dots = document.querySelectorAll('.dot');
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                dots[i].classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                    dots[i].classList.add('active');
+                }
+            });
+        }
+
+        function currentSlide(index) {
+            currentIndex = index;
+            showSlide(currentIndex);
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            showSlide(currentIndex);
+        }
+
+        setInterval(nextSlide, 5000);
+    </script>
+</body>
+</html>
