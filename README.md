@@ -1,0 +1,1 @@
+# Yichang Web\n\nPersonal website and portfolio.\n\n## Technologies\n- HTML\n- CSS\n- JavaScript
